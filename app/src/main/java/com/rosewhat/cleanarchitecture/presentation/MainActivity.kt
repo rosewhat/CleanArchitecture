@@ -1,15 +1,9 @@
 package com.rosewhat.cleanarchitecture.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import com.rosewhat.cleanarchitecture.data.repository.UserRepositoryImpl
-import com.rosewhat.cleanarchitecture.data.storage.SharedPrefUserStorage
-import com.rosewhat.cleanarchitecture.data.storage.UserStorage
+import androidx.appcompat.app.AppCompatActivity
 import com.rosewhat.cleanarchitecture.databinding.ActivityMainBinding
-import com.rosewhat.cleanarchitecture.domain.model.SaveUserNameParam
-import com.rosewhat.cleanarchitecture.domain.usecases.GetUserNameUseCase
-import com.rosewhat.cleanarchitecture.domain.usecases.SaveUserNameUseCase
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,10 +11,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, MainViewModelFactory(this))[MainViewModel::class.java]
-    }
-
+    private val viewModel by viewModel<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -34,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.save(text = text)
         }
     }
+
     private fun observe() {
         viewModel.result.observe(this) {
             binding.dataTextView.text = it
