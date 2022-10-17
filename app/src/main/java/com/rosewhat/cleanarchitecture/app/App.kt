@@ -6,11 +6,13 @@ import com.rosewhat.cleanarchitecture.di.dagger.AppComponent
 import com.rosewhat.cleanarchitecture.di.dataModule
 import com.rosewhat.cleanarchitecture.di.domainModule
 import dagger.Component
+import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
+@HiltAndroidApp
 class App : Application() {
 
     lateinit var appComponent: AppComponent
@@ -23,6 +25,9 @@ class App : Application() {
         }*/
 
             //   appComponent = DaggerAppComponent.builder().
+
+
+
     }
 
 }
