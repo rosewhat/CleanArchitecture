@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -60,4 +62,11 @@ dependencies {
 // Koin Test features
     testImplementation "io.insert-koin:koin-test:$koin_version"
 
+    // dagger
+    implementation 'com.google.dagger:dagger:2.37'
+    kapt 'com.google.dagger:dagger-compiler:2.37'
+
+
+    implementation 'com.google.dagger:hilt-android:2.37'
+    kapt 'com.google.dagger:hilt-compiler:2.37'
 }
