@@ -16,6 +16,7 @@ class GetUserNameUseCaseTest {
     fun `should return the same data as it repository`() {
 
         val testUserName = UserName(firstName = "test firstName", lastName = "test last name")
+        // когда вызов этого теста будет -> вернет значения выше
         Mockito.`when`(userRepository.getName()).thenReturn(testUserName)
 
         val actual = GetUserNameUseCase(userRepository = userRepository).getName()
